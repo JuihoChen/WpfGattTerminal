@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfGattTerminal.PinCodeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfGattTerminal"
+        mc:Ignorable="d"
+        Icon="dog-paw.ico"
+        Title="Input new PIN code" Height="110" Width="250" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="15,5">
+                <TextBlock Margin="0" Text="Current PIN code: "/>
+                <TextBox Margin="0" IsReadOnly="True" Text="{Binding PINCode}"/>
+            </StackPanel>
+            <TextBox x:Name="pinTextBox" Margin="15,5" MaxLength="6" PreviewTextInput="pinTextBox_PreviewTextInput" KeyUp="pinTextBox_KeyUp"/>
+        </StackPanel>
+    </Grid>
+</Window>
