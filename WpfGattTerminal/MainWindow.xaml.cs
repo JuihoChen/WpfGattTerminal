@@ -446,7 +446,8 @@ namespace WpfGattTerminal
                         StartBLEWatcher();
 
                         await syncWatcherTaskSrc.Task;
-                        syncWatcherTaskSrc = null;                    }
+                        syncWatcherTaskSrc = null;
+                    }
                 }
                 else
                 {
