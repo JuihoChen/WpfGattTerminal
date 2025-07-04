@@ -36,7 +36,7 @@ namespace WpfGattTerminal
         public const int MAC_LENGTH = 17;           // MAC Format: 11:22:33:44:55:66
         public const int PIN_LENGTH = 6;
 
-        private RegistrySetting registrySetting;
+        private readonly RegistrySetting registrySetting;
         private string MACAddress = string.Empty;
         public string PINCode { get; set; } = string.Empty;
         public string NameFilter { get; set; } = string.Empty;
@@ -153,8 +153,10 @@ namespace WpfGattTerminal
             else if (argvs[0].Equals("%setting"))
             {
                 // Set the desired remaining view.
-                var options = new LauncherOptions();
-                options.DesiredRemainingView = ViewSizePreference.UseMore;
+                var options = new LauncherOptions
+                {
+                    DesiredRemainingView = ViewSizePreference.UseMore
+                };
                 // Launch the URI
                 Dispatcher.Invoke(DispatcherPriority.Normal, new Action(async () =>
                 {
@@ -395,7 +397,7 @@ namespace WpfGattTerminal
                 }
                 else
                 {
-                    msgTextBox.AppendText($"Pairing Failed {result.Status.ToString()}\r");
+                    msgTextBox.AppendText($"Pairing Failed {result.Status}\r");
                 }
             }
 
@@ -709,7 +711,7 @@ namespace WpfGattTerminal
             {
                 if (characteristic.CharacteristicProperties.HasFlag(GattCharacteristicProperties.Notify))
                 {
-                    GattCommunicationStatus status = await characteristic.WriteClientCharacteristicConfigurationDescriptorAsync(GattClientCharacteristicConfigurationDescriptorValue.None);
+                    await characteristic.WriteClientCharacteristicConfigurationDescriptorAsync(GattClientCharacteristicConfigurationDescriptorValue.None);
                 }
             }
 

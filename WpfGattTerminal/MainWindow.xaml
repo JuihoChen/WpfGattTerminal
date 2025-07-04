@@ -17,7 +17,9 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>    </Window.Resources>
+        </Style>
+    </Window.Resources>
+
     <Grid Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
